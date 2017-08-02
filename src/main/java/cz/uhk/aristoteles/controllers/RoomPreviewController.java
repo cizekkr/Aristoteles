@@ -7,31 +7,14 @@ package cz.uhk.aristoteles.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 
 /**
  * FXML Controller class
  *
- * @author Kryštof
+ * @author Adam Černohorský
  */
-public class AddedWindowController implements Initializable {
-
-    @FXML
-    Circle humCircle;
-
-    @FXML
-    private void mouseClickBitch(MouseEvent event) {
-        if (humCircle.getFill().equals(Color.YELLOW)) {
-            humCircle.setFill(Color.GREEN);
-        } else {
-            humCircle.setFill(Color.YELLOW);
-        }
-
-    }
+public class RoomPreviewController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -39,6 +22,6 @@ public class AddedWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
-
+    }    
+    
 }

@@ -1,3 +1,19 @@
 .button {
     -fx-font-weight: bold;
+    -fx-background-color:  #4779cc;
+    -fx-background-radius: 30;
 }
+
+ .radio-button .radio, .check-box .box {
+    -fx-background-insets: 0;
+    -fx-background-color:  white;
+}
+
+ .radio-button:selected .radio, .check-box:selected .box {
+    -fx-background-color:   #10408c;
+}
+
+ .radio-button .radio .dot, .check-box:selected .box .mark {
+     -fx-background-color:  transparent;
+ }
+

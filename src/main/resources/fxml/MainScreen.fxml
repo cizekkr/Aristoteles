@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
@@ -12,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.uhk.aristoteles.controllers.MainScreenController">
     <children>
-      <AnchorPane layoutX="14.0" layoutY="87.0" prefHeight="619.0" prefWidth="247.0" style="-fx-border-color: black;">
+      <AnchorPane layoutX="14.0" layoutY="87.0" prefHeight="619.0" prefWidth="247.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="87.0">
          <children>
             <CheckBox layoutX="25.0" layoutY="330.0" mnemonicParsing="false" text="Klimatizace" />
             <CheckBox layoutX="25.0" layoutY="296.0" mnemonicParsing="false" text="Balkon" />
@@ -36,31 +37,45 @@
             <Button fx:id="btnShowAllRooms" layoutX="138.0" layoutY="412.0" mnemonicParsing="false" onAction="#showAllRooms" prefHeight="31.0" prefWidth="103.0" text="Zobraz vše" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="1.0" layoutY="-1.0" prefHeight="82.0" prefWidth="1271.0">
+      <AnchorPane layoutX="1.0" layoutY="-1.0" prefHeight="82.0" prefWidth="1271.0" AnchorPane.bottomAnchor="639.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="1036.0" layoutY="28.0" prefHeight="21.0" prefWidth="133.0" text="Přihlášený uživatel" />
-            <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="1001.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../Desktop/siluet.jpg" />
-               </image>
-            </ImageView>
             <Label layoutX="14.0" layoutY="12.0" prefHeight="21.0" prefWidth="70.0" text="TIME" />
             <Label layoutX="14.0" layoutY="38.0" prefHeight="19.0" prefWidth="59.0" text="DATE">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="528.0" layoutY="29.0" text="JMENO HOTELU">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-            <Button layoutX="1175.0" layoutY="7.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="89.0" text="Odhlášení" />
+            <StackPane layoutX="528.0" prefHeight="83.0" prefWidth="1271.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Label layoutX="528.0" layoutY="29.0" text="JMENO HOTELU" StackPane.alignment="CENTER">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="31.0" prefWidth="172.0" text="Přihlášený uživatel" StackPane.alignment="CENTER_RIGHT">
+                     <StackPane.margin>
+                        <Insets right="130.0" />
+                     </StackPane.margin>
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../Desktop/siluet.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="89.0" text="Odhlášení" StackPane.alignment="TOP_RIGHT">
+                     <StackPane.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </StackPane.margin>
+                  </Button>
+               </children>
+            </StackPane>
          </children>
       </AnchorPane>
-      <ScrollPane layoutX="280.0" layoutY="87.0" prefHeight="619.0" prefWidth="986.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="280.0" layoutY="87.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="87.0">
         <content>
-          <AnchorPane fx:id="aPaneRoomPane" minHeight="0.0" minWidth="0.0" prefHeight="334.0" prefWidth="382.0" />
+          <AnchorPane fx:id="aPaneRoomPane" prefWidth="984.0" />
         </content>
       </ScrollPane>
     </children>

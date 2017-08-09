@@ -30,6 +30,10 @@ public class Room {
         this.roomNumber = roomNumber;
     }
 
+    public String getRoomNumber() {
+        return roomNumber;
+    }
+
     public Bill getBill() {
         return bill;
     }

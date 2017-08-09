@@ -12,7 +12,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage){
-       Parent root = AppWindow.MAIN_SCREEN.getWindow();
+       Parent root = new AppWindow(Window.MAIN_SCREEN).getWindowPane();
        /* Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainScreen.fxml"));*/
         
         

@@ -5,6 +5,7 @@
  */
 package cz.uhk.aristoteles.app;
 
+import cz.uhk.aristoteles.controllers.RoomFillable;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,23 +16,32 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author Adam Černohorský
  */
-public enum AppWindow {
-    MAIN_SCREEN("/fxml/MainScreen.fxml"),
-    ROOM_PREVIEW("/fxml/RoomPreview.fxml");
+public class AppWindow {
 
-    private final String PATH;
+    private AnchorPane windowPane;
+    private Object controller;
 
-    private AppWindow(String path) {
-        this.PATH = path;
-    }
-
-    public AnchorPane getWindow(){
+    public AppWindow(Window window) {
+        String path = window.getPath();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
         try {
-            return FXMLLoader.load(getClass().getResource(PATH));
+            windowPane = fxmlLoader.load();
         } catch (IOException ex) {
             Logger.getLogger(AppWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        controller = fxmlLoader.getController();
     }
- 
+
+    public AnchorPane getWindowPane() {
+        return windowPane;
+    }
+
+    public RoomFillable getControllerForRoomFillable() {
+        if (!(controller instanceof RoomFillable)) {
+            Logger.getLogger(AppWindow.class.getName()).log(Level.SEVERE, "Controller is not instance of RoomFillable", new ClassCastException());
+            return null;
+        }
+        return (RoomFillable) controller;
+    }
+
 }

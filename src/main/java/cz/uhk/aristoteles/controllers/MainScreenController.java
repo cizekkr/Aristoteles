@@ -3,9 +3,12 @@ package cz.uhk.aristoteles.controllers;
 import cz.uhk.aristoteles.app.AppWindow;
 import cz.uhk.aristoteles.app.Room;
 import cz.uhk.aristoteles.app.Session;
+import cz.uhk.aristoteles.app.Window;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -35,15 +38,17 @@ public class MainScreenController implements Initializable {
 
     private void displayRooms(List<Room> rooms) {
         for (Room room : rooms) {
-            AnchorPane roomPane = AppWindow.ROOM_PREVIEW.getWindow();
+            AppWindow window = new AppWindow(Window.ROOM_PREVIEW);
+            AnchorPane roomPane = window.getWindowPane();
+            window.getControllerForRoomFillable().fill(room);
             aPaneRoomPane.getChildren().add(roomPane);
         }
     }
 
     private void setRoomPreviewLayout() {
         int roomPaneWidth = (int) aPaneRoomPane.getWidth();
-        int roomPreviewHeight = (int) AppWindow.ROOM_PREVIEW.getWindow().getPrefHeight();
-        int roomPreviewWidth = (int) AppWindow.ROOM_PREVIEW.getWindow().getPrefWidth();
+        int roomPreviewHeight = (int) new AppWindow(Window.ROOM_PREVIEW).getWindowPane().getPrefHeight();
+        int roomPreviewWidth = (int) new AppWindow(Window.ROOM_PREVIEW).getWindowPane().getPrefWidth();
         int period = roomPaneWidth / roomPreviewWidth;
         int basicOffSet = (roomPaneWidth % roomPreviewWidth) / (period + 1);
 
@@ -73,12 +78,7 @@ public class MainScreenController implements Initializable {
     }
     
     private void setWidthListener(){
-        aPaneRoomPane.widthProperty().addListener(new ChangeListener<Number>(){
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                setRoomPreviewLayout();
-            }
-        });
+        aPaneRoomPane.widthProperty().addListener(event -> setRoomPreviewLayout());
     }
 
 }
